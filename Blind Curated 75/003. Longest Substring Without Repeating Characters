@@ -1,0 +1,29 @@
+"""
+Approach 1: Using HashSet, sliding window
+
+Runtime: 64 ms, faster than 64.29% of Python3 online submissions for Longest Substring Without Repeating Characters.
+Memory Usage: 14.4 MB, less than 26.20% of Python3 online submissions for Longest Substring Without Repeating Characters.
+"""
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        characters = set()
+        left = right = ans = 0
+        length = len(s)
+
+        while right < length:
+            
+            if s[right] in characters:
+                characters.remove(s[left])
+                left += 1
+            else:
+                characters.add(s[right])
+                right += 1
+                ans = max(ans, right-left)
+        return ans
+
+"""
+Approach 2: Using HashMap, sliding window
+
+"""
+       
